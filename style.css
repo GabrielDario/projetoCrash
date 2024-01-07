@@ -19,23 +19,82 @@
 
 header {
   background-color: #408FDD;
-    border-bottom: solid;
-    border-bottom-color: #EDFA09;;
+  border-bottom: solid;
+  border-bottom-color: #EDFA09;
+  ;
 }
 
 header a {
   color: #EDFA09;
   text-decoration: none;
   margin: 0px 20px;
-  font-size: 50px;
+  font-size: 30px;
 }
+
 header img {
   margin: 5px 0px;
+  height: 70px;
 }
+
 .flutuar {
   float: right;
   display: flex;
 }
+
 .flutuar a {
   margin: 25px 25px;
+}
+
+section {
+  background-color: black;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+section h1 {
+  color: rgb(71, 205, 0);
+  font-size: 35px;
+  margin-bottom: unset;
+  text-align: center;
+}
+
+article p {
+  color: rgb(71, 205, 0);
+  border-radius: 50%;
+  width: 52px;
+  text-align: center;
+  background-color: #408FDD;
+}
+.anteriores {
+  display: flex;
+}
+.anteriores p {
+  margin: 25px;
+}
+canvas {
+  height: 100%;
+  width: 95%;
+  border: none;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  background-color: rgb(65, 87, 62);
+}
+
+td,
+th {
+  border: 3px solid black;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: rgb(157, 150, 150);
+  ;
+}
+
+.tituloTabela {
+  color: green;
+  font-size: x-large;
 }

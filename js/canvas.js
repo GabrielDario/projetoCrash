@@ -27,7 +27,7 @@ function draw() {
     // Velocidade
     ctx.font = "bold 50px verdana, sans-serif";
     ctx.fillStyle = "rgb(71, 205, 0)";
-    ctx.fillText("0,5 " + " x", 150, 150);
+    ctx.fillText("0.0 " + " x", 150, 150);
 
     botarImagem('img/logo-passaro.png', 175, 250, ctx);
     botarImagem('img/estilingue.png', 125, 300, ctx);

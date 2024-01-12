@@ -1,3 +1,6 @@
+body {
+  margin: 0;
+}
 header {
   background-color: #408FDD;
   border-bottom: solid;
@@ -8,7 +11,7 @@ header {
 header a {
   color: #EDFA09;
   text-decoration: none;
-  margin: 0px 20px;
+  
   font-size: 30px;
 }
 
@@ -23,7 +26,7 @@ header img {
 }
 
 .flutuar a {
-  margin: 25px 25px;
+  margin: 0px 15px;
 }
 
 section {
@@ -88,10 +91,6 @@ tr:nth-child(even) {
   font-size: x-large;
 }
 
-footer {
-  background-color: rgb(19, 19, 19);
-}
-
 .aposta {
   background-color: #408FDD;
   display: grid;
@@ -121,15 +120,6 @@ textarea {
   cursor: pointer;
 }
 
-.btnVerde::before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  right: 1px;
-  bottom: 1px;
-  left: 1px;
-
-}
 .btnCinza {
   font-size: 30px;
   border-style: inset;
@@ -140,4 +130,29 @@ textarea {
     border-color: white;
    
     cursor: pointer;
+}
+
+footer {
+  background-color: rgb(19, 19, 19);
+  display: grid;
+}
+h3 {
+  color: #555051;
+  font-size: x-large;
+  font-weight: bolder;
+}
+footer a {
+  text-decoration: none;
+  display: block;
+  color: #555051;
+  padding: 2px 0px;
+  font-family: arial;
+}
+footer p {
+  text-align: center;
+  color: #555051;
+}
+.grupoRodape{
+  display: grid;
+  grid-template-columns: 40% 20% 20% 20%;
 }

@@ -1,12 +1,28 @@
 
+let animationInterval;
+let trocarImagem;
+let pixelPular;
+let xPassaro;
+let yPassaro;
+const c = document.getElementById("myCanvas");
+const ctx = c.getContext("2d");
+const valorGanhado = document.getElementById("valorGanhado");
+
+
+let multiplicador = 0;
+let tempo = 1;
+let travarPassaro = false;
+
 function draw() {
-    const c = document.getElementById("myCanvas");
-    const ctx = c.getContext("2d");
-
- 
-
+    //limparAnteriores
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, 500, 500);
+    xPassaro = 175;
+    yPassaro = 250;
+    pixelPular = 5;
+    trocarImagem = 1;
+    multiplicador = 0;
     //X e Y FLECHAS
-    
     for (i = 1; i < 20; i++) {
         canvas_arrow(ctx, 100 + i, 375 + i, 100 + i, 50 + i);
     }
@@ -25,15 +41,28 @@ function draw() {
     ctx.fillText("3 s", 300, 425);
 
     // Velocidade
+
     ctx.font = "bold 50px verdana, sans-serif";
     ctx.fillStyle = "rgb(71, 205, 0)";
-    ctx.fillText("0.0 " + " x", 150, 150);
+    ctx.fillText("0.0 " + " x", 150, 125);
 
-    botarImagem('img/logo-passaro.png', 175, 250, ctx);
+    botarImagem('img/logo-passaro.png', xPassaro, yPassaro, ctx);
     botarImagem('img/estilingue.png', 125, 300, ctx);
+
+
+
+    function canvas_arrow(context, fromx, fromy, tox, toy) {
+        var headlen = 10; // length of head in pixels
+        var dx = tox - fromx;
+        var dy = toy - fromy;
+        var angle = Math.atan2(dy, dx);
+        context.moveTo(fromx, fromy);
+        context.lineTo(tox, toy);
+        context.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
+        context.moveTo(tox, toy);
+        context.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
+    }
 }
-
-
 
 function botarImagem(imagem, x, y, ctx) {
     base_image = new Image();
@@ -41,19 +70,62 @@ function botarImagem(imagem, x, y, ctx) {
     ctx.drawImage(base_image, x, y);//X,Y,TAMANHOS
 
 }
+const apostado = () => {
+    animationInterval = setInterval(animacaoPassaro, 500);
+    multiplicadorInterval = setInterval(animacaoMultiplicador, 1000);
+    function animacaoPassaro() {
+        let nomeImagem = 'img/frames/frame' + trocarImagem + '.png';
+        trocarImagem++;
 
-function canvas_arrow(context, fromx, fromy, tox, toy) {
-    var headlen = 10; // length of head in pixels
-    var dx = tox - fromx;
-    var dy = toy - fromy;
-    var angle = Math.atan2(dy, dx);
-    context.moveTo(fromx, fromy);
-    context.lineTo(tox, toy);
-    context.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
-    context.moveTo(tox, toy);
-    context.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
+        ctx.fillStyle = 'black';
+        ctx.fillRect(175, 150, 250, 200); //apagar
+        xPassaro = xPassaro + pixelPular;
+        yPassaro = yPassaro - pixelPular;
+
+        if (travarPassaro == true) {
+            xPassaro = 280;
+            yPassaro = 145;
+        }
+        botarImagem(nomeImagem, xPassaro, yPassaro, ctx);
+
+        pixelPular = pixelPular + 5;
+        if (trocarImagem > 12) {
+            trocarImagem = 1;
+        }
+        console.log(xPassaro);
+        console.log(yPassaro);
+        if (xPassaro >= 300 || yPassaro <= 145) {
+
+            travarPassaro = true;
+        }
+    }
+
+    function animacaoMultiplicador() {
+        //apagar multiplicador
+        ctx.fillStyle = 'black';
+        ctx.fillRect(150, 75, 300, 65);
+
+        //fazer novo multiplicador
+        ctx.font = "bold 50px verdana, sans-serif";
+        ctx.fillStyle = "rgb(71, 205, 0)";
+        multiplicador = multiplicador + 0.2;
+        ctx.fillText(multiplicador.toFixed(2) + " x", 150, 125);
+
+
+        ctx.fillStyle = 'black';
+        ctx.fillRect(150, 400, 300, 65);
+
+        ctx.font = "25px serif";
+        ctx.fillStyle = "rgb(71, 205, 0)";
+        ctx.fillText(tempo + ' s', 150, 425);
+        ctx.fillText(tempo + 1 + " s", 225, 425);
+        ctx.fillText(tempo + 2 + " s", 300, 425);
+        tempo++;
+        valorGanhado.innerHTML = `R$${(multiplicador * valorApostado).toFixed(2)}`;
+    }
 }
+
 
 window.onload = function (e) {
     draw();
-}
+}   

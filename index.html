@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
 
     <title>Passarinho da sorte</title>
@@ -38,15 +37,27 @@
             </div>
 
             <img src="img/estilingue.png" style="display: none;">
-
+            <img src="img/frames/frame1.png" style="display: none;">
+            <img src="img/frames/frame2.png" style="display: none;">
+            <img src="img/frames/frame3.png" style="display: none;">
+            <img src="img/frames/frame4.png" style="display: none;">
+            <img src="img/frames/frame5.png" style="display: none;">
+            <img src="img/frames/frame6.png" style="display: none;">
+            <img src="img/frames/frame7.png" style="display: none;">
+            <img src="img/frames/frame8.png" style="display: none;">
+            <img src="img/frames/frame9.png" style="display: none;">
+            <img src="img/frames/frame10.png" style="display: none;">
+            <img src="img/frames/frame11.png" style="display: none;">
+            <img src="img/frames/frame12.png" style="display: none;">
+            
             <canvas id="myCanvas" width="500px" height="450px">
 
             </canvas>
 
         </article>
         <article>
-            <h1>Seu Saldo:</h1>
-            <h1>0</h1>
+            <h1>Saldo Ficticio para inicar:</h1>
+            <h1 >R$ 50</h1>
             <table>
                 <tr class="tituloTabela">
                     <th s>USER</th>
@@ -96,13 +107,16 @@
 
     <section class="aposta">
         <div>
-            <textarea id="w3review" placeholder=" ⌶ Valor" rows="2" cols="10"></textarea>
+            <textarea placeholder=" ⌶ Valor" rows="2" cols="10" id="inValor" required></textarea>
             <br>
             <button type="button" class="btnVerde" id="apostar">Apostar</button>
         </div>
         <div>
-            <h1>0</h1>
-            <h2>Parado...</h2>
+            <h1>Seu Saldo fictício atual:</h1>
+            <h1 id="inSaldo">R$ 50</h1>
+            <h2 id="statusDinheiro">Parado</h2>
+            <h1 id="valorGanhado">0</h1>
+
             <button type="button" class="btnCinza" id="resgatar">Resgatar</button>
         </div>
         <div>
@@ -124,7 +138,7 @@
                 <h3>Acompanhar</h3>
                 <div style="display: -webkit-box;">
                     <a href="#"><img src="img/instagranIcon.png"></a>
-                    <a href="#"></a><img src="img/twitterIcon.png"></a>
+                    <a href="#"><img src="img/twitterIcon.png"></a>
                     <a href="#"> <img src="img/facebookIcon.png"></a>
                 </div>
             </div>

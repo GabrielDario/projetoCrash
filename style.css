@@ -39,7 +39,7 @@ section {
 section h1 {
   color: rgb(71, 205, 0);
   font-size: 35px;
-
+  margin: 10px;
   text-align: center;
 }
 

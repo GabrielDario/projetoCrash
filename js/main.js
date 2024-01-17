@@ -4,8 +4,10 @@ let cadastrar = document.getElementById("cadastrar");
 
 let inValor = document.getElementById("inValor");
 const inSaldo = document.getElementById("inSaldo");
-
-
+let mult1 = document.getElementById("mult1");
+let mult2 = document.getElementById("mult2");
+let mult3 = document.getElementById("mult3");
+let multiplicadores = [0,0,0];
 
 let tentativas = 3;
 
@@ -18,6 +20,7 @@ resgatar.disabled = true;
 
 
 apostar.addEventListener("click", (e) => {
+  window.location.hash = "#tabela";
   valorApostado = inValor.value;
   console.log("Valor apostado: " + valorApostado);
 
@@ -30,15 +33,15 @@ apostar.addEventListener("click", (e) => {
   inValor.value = "";
   statusDinheiro.innerText = "SUBINDO...";
   saldoFicticio = saldoFicticio - valorApostado
-  inSaldo.innerText = saldoFicticio;
-  apostado();
+  inSaldo.innerText = saldoFicticio.toFixed(2);
+  apostado(valorApostado);
   resgatar.disabled = false;
   apostar.disabled = true;
+  
 });
 
 const validacoes = (valorApostado) => {
-  console.log('validar');
-  console.log(valorApostado);
+
   if (valorApostado == "") {
     alert("Preenha o campo com valor!");
     pararValidacao = true;
@@ -52,6 +55,13 @@ const validacoes = (valorApostado) => {
   }
   if (tentativas <= 0) {
     alert("Acabou as tentativas");
+    resgatar.disabled = true;
+    apostar.disabled = true;
+    pararValidacao = true;
+    return;
+  }
+  if (isNaN(valorApostado)) {
+    alert("Digite um número");
     pararValidacao = true;
     return;
   }
@@ -73,7 +83,18 @@ function resgatou() {
   inSaldo.innerText = saldoFicticio.toFixed(2);
   statusDinheiro.innerText = "Parado";
   valorGanhado.innerHTML = '0';
+  mudarMultiplicadores();
   draw();
+  travarPassaro = false;
   resgatar.disabled = true;
   apostar.disabled = false;
+  window.location.hash = "";
+}
+
+
+const mudarMultiplicadores = () => {
+  multiplicadores.unshift(multiplicador);
+  mult1.innerText = multiplicadores[0].toFixed(2) + ' x';
+  mult2.innerText = multiplicadores[1].toFixed(2) + 'x';
+  mult3.innerText = multiplicadores[2].toFixed(2) + 'x';
 }

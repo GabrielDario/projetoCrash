@@ -31,9 +31,9 @@
         <article>
             <h1>Rodadas Anteriores:</h1>
             <div class="anteriores">
-                <p>0.00 x</p>
-                <p>0.00 x</p>
-                <p>0.00 x</p>
+                <p id="mult1">0.00 x</p>
+                <p id="mult2">0.00 x</p>
+                <p id="mult3">0.00 x</p>
             </div>
 
             <img src="img/estilingue.png" style="display: none;">
@@ -49,7 +49,8 @@
             <img src="img/frames/frame10.png" style="display: none;">
             <img src="img/frames/frame11.png" style="display: none;">
             <img src="img/frames/frame12.png" style="display: none;">
-            
+            <img src="img/explosion.png" style="display: none;">
+
             <canvas id="myCanvas" width="500px" height="450px">
 
             </canvas>
@@ -58,8 +59,8 @@
         <article>
             <h1>Saldo Ficticio para inicar:</h1>
             <h1 >R$ 50</h1>
-            <table>
-                <tr class="tituloTabela">
+            <table > 
+                <tr class="tituloTabela" id="tabela">
                     <th s>USER</th>
                     <th>BET</th>
                     <th>X</th>
@@ -107,17 +108,19 @@
 
     <section class="aposta">
         <div>
-            <textarea placeholder=" ⌶ Valor" rows="2" cols="10" id="inValor" required></textarea>
+            <textarea placeholder=" ⌶ Valor" rows="2" cols="10" id="inValor" required type="number"></textarea>
             <br>
-            <button type="button" class="btnVerde" id="apostar">Apostar</button>
+            <button type="button" class="btnVerde" id="apostar" >Apostar</button>
         </div>
         <div>
-            <h1>Seu Saldo fictício atual:</h1>
-            <h1 id="inSaldo">R$ 50</h1>
+            
+            <button type="button" class="btnCinza" id="resgatar">Resgatar</button>
             <h2 id="statusDinheiro">Parado</h2>
             <h1 id="valorGanhado">0</h1>
+            <h1>Seu Saldo fictício atual:</h1>
+            <h1 id="inSaldo">R$ 50</h1>
+           
 
-            <button type="button" class="btnCinza" id="resgatar">Resgatar</button>
         </div>
         <div>
             <button type="button" class="btnVerde" id="cadastrar">Cadastrar</button>

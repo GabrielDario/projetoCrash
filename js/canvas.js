@@ -8,7 +8,8 @@ const c = document.getElementById("myCanvas");
 const ctx = c.getContext("2d");
 const valorGanhado = document.getElementById("valorGanhado");
 
-
+let crash;
+let estourar = false;
 let multiplicador = 0;
 let tempo = 1;
 let travarPassaro = false;
@@ -71,9 +72,12 @@ function botarImagem(imagem, x, y, ctx) {
 
 }
 const apostado = () => {
-    animationInterval = setInterval(animacaoPassaro, 500);
+    animationInterval = setInterval(animacaoPassaro, 100);
     multiplicadorInterval = setInterval(animacaoMultiplicador, 1000);
+
+
     function animacaoPassaro() {
+    
         let nomeImagem = 'img/frames/frame' + trocarImagem + '.png';
         trocarImagem++;
 
@@ -92,8 +96,6 @@ const apostado = () => {
         if (trocarImagem > 12) {
             trocarImagem = 1;
         }
-        console.log(xPassaro);
-        console.log(yPassaro);
         if (xPassaro >= 300 || yPassaro <= 145) {
 
             travarPassaro = true;
@@ -101,27 +103,44 @@ const apostado = () => {
     }
 
     function animacaoMultiplicador() {
-        //apagar multiplicador
-        ctx.fillStyle = 'black';
-        ctx.fillRect(150, 75, 300, 65);
+        crash = Math.floor(Math.random() * 30);
+        console.log(`crash ${crash}`);
+        if (crash == 0) {
+            alert("Estourou!\nAposta perdida!");
+            statusDinheiro.innerText = "Parado";
+            valorGanhado.innerHTML = '0';
+            resgatar.disabled = true;
+            apostar.disabled = false;
+            multiplicador = 0;
+            draw();
+            travarPassaro = false;
+            mudarMultiplicadores();
+            clearInterval(animationInterval);
+            clearInterval(multiplicadorInterval);
+        } else {
+            //apagar multiplicador
+            ctx.fillStyle = 'black';
+            ctx.fillRect(150, 75, 300, 65);
 
-        //fazer novo multiplicador
-        ctx.font = "bold 50px verdana, sans-serif";
-        ctx.fillStyle = "rgb(71, 205, 0)";
-        multiplicador = multiplicador + 0.2;
-        ctx.fillText(multiplicador.toFixed(2) + " x", 150, 125);
+            //fazer novo multiplicador
+            ctx.font = "bold 50px verdana, sans-serif";
+            ctx.fillStyle = "rgb(71, 205, 0)";
+            multiplicador = multiplicador + 0.2;
+            ctx.fillText(multiplicador.toFixed(2) + " x", 150, 125);
 
 
-        ctx.fillStyle = 'black';
-        ctx.fillRect(150, 400, 300, 65);
+            ctx.fillStyle = 'black';
+            ctx.fillRect(150, 400, 300, 65);
 
-        ctx.font = "25px serif";
-        ctx.fillStyle = "rgb(71, 205, 0)";
-        ctx.fillText(tempo + ' s', 150, 425);
-        ctx.fillText(tempo + 1 + " s", 225, 425);
-        ctx.fillText(tempo + 2 + " s", 300, 425);
-        tempo++;
-        valorGanhado.innerHTML = `R$${(multiplicador * valorApostado).toFixed(2)}`;
+            ctx.font = "25px serif";
+            ctx.fillStyle = "rgb(71, 205, 0)";
+            ctx.fillText(tempo + ' s', 150, 425);
+            ctx.fillText(tempo + 1 + " s", 225, 425);
+            ctx.fillText(tempo + 2 + " s", 300, 425);
+            tempo++;
+            valorGanhado.innerHTML = `R$${(multiplicador * valorApostado).toFixed(2)}`;
+        }
+
     }
 }
 

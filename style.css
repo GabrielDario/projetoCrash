@@ -8,6 +8,7 @@ header {
 }
 h2 {
   margin: 0 0;
+  color:red;
 }
 header a {
   color: #EDFA09;
@@ -35,6 +36,7 @@ section {
   display: grid;
   grid-template-columns: 50% 50%;
   margin: 25px 40px;
+  text-align: center;
 }
 
 section h1 {
@@ -119,8 +121,24 @@ textarea {
   border-radius:5px;
   box-shadow: 2px 2px 8px rgba(0, 255, 255, 1);
   cursor: pointer;
+  
 }
-
+.btnMeio{
+  font-size: 30px;
+    background-color: cornsilk;
+    padding: 10px 25px;
+    margin: 5px 0px;
+    font-weight: bold;
+    font-style: italic;
+    color: steelblue;
+    border-color: cornflowerblue;
+    border-radius: 5px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 155, 1);
+    cursor: pointer;
+}
+.aposta .btnVerde,.aposta .btnMeio {
+  margin: 50px 0px;
+}
 .btnCinza {
   font-size: 30px;
   border-style: inset;
@@ -129,7 +147,6 @@ textarea {
     font-weight: bold;
     background: linear-gradient(to LEFT, #818181, #F8F8F8);
     border-color: white;
-   
     cursor: pointer;
 }
 

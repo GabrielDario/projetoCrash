@@ -20,7 +20,6 @@ resgatar.disabled = true;
 
 
 apostar.addEventListener("click", (e) => {
-  window.location.hash = "#tabela";
   valorApostado = inValor.value;
   console.log("Valor apostado: " + valorApostado);
 
@@ -29,7 +28,7 @@ apostar.addEventListener("click", (e) => {
     return;
   }
   tentativas--;
-  alert(`Você mais ${tentativas} tentativas`);
+  alert(`Você tem mais ${tentativas} tentativas`);
   inValor.value = "";
   statusDinheiro.innerText = "SUBINDO...";
   saldoFicticio = saldoFicticio - valorApostado
@@ -88,7 +87,6 @@ function resgatou() {
   travarPassaro = false;
   resgatar.disabled = true;
   apostar.disabled = false;
-  window.location.hash = "";
 }
 
 

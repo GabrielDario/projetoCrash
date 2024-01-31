@@ -47,7 +47,7 @@ function draw() {
     ctx.fillStyle = "rgb(71, 205, 0)";
     ctx.fillText("0.0 " + " x", 150, 125);
 
-    botarImagem('img/logo-passaro.png', xPassaro, yPassaro, ctx);
+    botarImagem('img/frames/frame0.png', xPassaro, yPassaro, ctx);
     botarImagem('img/estilingue.png', 125, 300, ctx);
 
 

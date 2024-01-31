@@ -53,4 +53,13 @@ function myFunction() {
   console.log('maior número: ' + maior.toFixed(2)  )
 }
 var intervalId = setInterval(myFunction, 1000);
-       
+       --------------------------------------
+       Páginas de dúvidas
+            - Como funciona multiplicador
+            - Como jogar
+            - Perguntas frequentes
+       Contato
+             - Nosso contato
+             - Quem somos
+             - Parceiros
+       Ganhadores(será pop-up )

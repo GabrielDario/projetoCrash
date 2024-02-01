@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,41 +7,39 @@
     <link rel="stylesheet" type="text/css" href="secundarias.css" media="screen" />
     <link rel="icon" type="image/x-icon" href="img/logoPassaro.ico">
 
-    <title>Registro</title>
+    <title>Logar</title>
 </head>
-
 <body>
     <iframe src="header.html" style="height: 95px;
     width: 99%;">
     </iframe>
 
-    <h1>Página de Registro</h1>
-
+    <h1>Página de Login</h1>
     <form action="/action_page.php" method="post">
-        
+        <div class="imgcontainer">
+          <img src="https://d1nhio0ox7pgb.cloudfront.net/_img/g_collection_png/standard/512x512/user.png" alt="Avatar" class="avatar">
+        </div>
       
         <div class="container">
           <label for="uname"><b>Usuário</b></label>
           <input type="text" placeholder="Entre com usuário" name="uname" required>
-
-          <label for="uname"><b>Email</b></label>
-          <input type="text" placeholder="Entre com email" name="uname" required>
-
+      
           <label for="psw"><b>Senha</b></label>
           <input type="password" placeholder="Entre com a senha" name="psw" required>
               
-          <label for="psw"><b>Confirmar Senha</b></label>
-          <input type="password" placeholder="Confirme a senha" name="psw" required>
-              
-          <button type="submit">Cadastrar</button>
-        
+          <button type="submit">Logar</button>
+          <label>
+            <input type="checkbox" checked="checked" name="remember"> Lembrar
+          </label>
         </div>
       
+        <div class="container" style="background-color:#f1f1f1">
+          <button type="button" class="cancelbtn">Cancelar</button>
+          <span class="psw">Esqueceu a <a href="#">senha?</a></span>
+        </div>
       </form>   
-
     <iframe src="footer.html" style="height: 250px;
     width: 99%;">
     </iframe>
 </body>
-
 </html>

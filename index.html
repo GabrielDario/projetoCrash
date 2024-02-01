@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
     <title>Passarinho da sorte</title>
+    <link rel="icon" type="image/x-icon" href="img/logoPassaro.ico">
 </head>
+
 <body>
 
     <iframe src="header.html" style="height: 100px;
@@ -35,24 +37,24 @@
             <img src="img/frames/frame11.png" style="display: none;">
             <img src="img/frames/frame12.png" style="display: none;">
             <img src="img/explosion.png" style="display: none;">
-       
+
 
             <canvas id="myCanvas" width="500px" height="450px">
 
             </canvas>
-           
+
         </article>
         <article style="margin-block-start: auto;">
             <textarea placeholder=" ⌶ Valor" rows="2" cols="10" id="inValor" required type="number"></textarea>
             <br> <br>
-            <button type="button" class="btnVerde" id="apostar" >Apostar</button>
+            <button type="button" class="btnVerde" id="apostar">Apostar</button>
             <br> <br>
             <button type="button" class="btnCinza" id="resgatar">Resgatar</button>
             <h2 id="statusDinheiro">Parado</h2>
             <h1 id="valorGanhado">0</h1>
             <h1>Seu Saldo fictício atual:</h1>
             <h1 id="inSaldo">R$ 50</h1>
-           
+
         </article>
     </section>
 
@@ -63,7 +65,7 @@
         <div>
             <button type="button" class="btnMeio" id="comoFunciona">Ver Ganhadores</button>
             <h1 style="display: none;">Ultimos ganhadores:</h1>
-            <table style="display: none;"> 
+            <table style="display: none;">
                 <tr class="tituloTabela" id="tabela">
                     <th s>USER</th>
                     <th>BET</th>
@@ -110,14 +112,14 @@
 
         </div>
         <div>
-            <button type="button" class="btnVerde" id="cadastrar">Cadastrar</button>
+            <a href="registro.html"><button type="button" class="btnVerde" id="cadastrar">Cadastrar</button></a>
         </div>
     </section>
 
-        <iframe src="footer.html" style="height: 250px;
+    <iframe src="footer.html" style="height: 250px;
         width: 99%;">
-        </iframe>
-   
+    </iframe>
+
     <script src="js/main.js"></script>
     <script src="js/canvas.js"></script>
 </body>

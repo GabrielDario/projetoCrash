@@ -16,8 +16,6 @@ let saldoFicticio = saldoInicial;
 let valorApostado;
 let pararValidacao = false;
 
-resgatar.disabled = true;
-
 
 apostar.addEventListener("click", (e) => {
   valorApostado = inValor.value;
@@ -61,6 +59,11 @@ const validacoes = (valorApostado) => {
   }
   if (isNaN(valorApostado)) {
     alert("Digite um número");
+    pararValidacao = true;
+    return;
+  }
+  if(saldoFicticio <= 0) {
+    alert('SEM SALDO!');
     pararValidacao = true;
     return;
   }

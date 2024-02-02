@@ -99,3 +99,4 @@ const mudarMultiplicadores = () => {
   mult2.innerText = multiplicadores[1].toFixed(2) + 'x';
   mult3.innerText = multiplicadores[2].toFixed(2) + 'x';
 }
+

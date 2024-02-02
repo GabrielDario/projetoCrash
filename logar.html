@@ -15,19 +15,19 @@
     </iframe>
 
     <h1>Página de Login</h1>
-    <form action="/action_page.php" method="post">
+    <form>
         <div class="imgcontainer">
           <img src="https://d1nhio0ox7pgb.cloudfront.net/_img/g_collection_png/standard/512x512/user.png" alt="Avatar" class="avatar">
         </div>
       
         <div class="container">
-          <label for="uname"><b>Usuário</b></label>
-          <input type="text" placeholder="Entre com usuário" name="uname" required>
+          <label for="uname"><b>Email</b></label>
+          <input type="text" placeholder="Entre com email" name="uname" id="inLogin" required>
       
           <label for="psw"><b>Senha</b></label>
-          <input type="password" placeholder="Entre com a senha" name="psw" required>
+          <input type="password" placeholder="Entre com a senha" name="psw" id="inSenha" required>
               
-          <button type="submit">Logar</button>
+          <button type="submit" id="logarBtn">Logar</button>
           <label>
             <input type="checkbox" checked="checked" name="remember"> Lembrar
           </label>
@@ -42,4 +42,5 @@
     width: 99%;">
     </iframe>
 </body>
+<script src="js/logar.js"></script>
 </html>

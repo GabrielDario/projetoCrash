@@ -44,12 +44,20 @@ const validacoes = (valorApostado) => {
     pararValidacao = true;
     return;
   }
-
-  if (valorApostado > saldoFicticio) {
-    alert("Valor a mais!");
-    pararValidacao = true;
-    return;
-  }
+   if(window.location.hash = '') {
+    if (valorApostado > saldoFicticio) {
+      alert("Valor a mais!");
+      pararValidacao = true;
+      return;
+    }else{
+      if (valorApostado > saldoAtual) {
+        alert("Valor a mais!");
+        pararValidacao = true;
+        return;
+      }
+    }
+   }
+ 
   if (tentativas <= 0) {
     alert("Acabou as tentativas");
     resgatar.disabled = true;

@@ -3,16 +3,16 @@ let resgatar = document.getElementById("resgatar");
 let cadastrar = document.getElementById("cadastrar");
 
 let inValor = document.getElementById("inValor");
-const inSaldo = document.getElementById("inSaldo");
+let inSaldo = document.getElementById("inSaldo");
 let mult1 = document.getElementById("mult1");
 let mult2 = document.getElementById("mult2");
 let mult3 = document.getElementById("mult3");
-let multiplicadores = [0,0,0];
+let multiplicadores = [0, 0, 0];
 
 let tentativas = 3;
 
 let saldoInicial = 50;
-let saldoFicticio = saldoInicial;
+let saldoFicticio = 50;
 let valorApostado;
 let pararValidacao = false;
 
@@ -22,42 +22,53 @@ apostar.addEventListener("click", (e) => {
   console.log("Valor apostado: " + valorApostado);
 
   validacoes(valorApostado);
-  if(pararValidacao == true) {
+
+  if (pararValidacao == true) {
     return;
   }
-  tentativas--;
-  alert(`Você tem mais ${tentativas} tentativas`);
+
+  if (window.location.hash == "") {
+    tentativas--;
+    alert(`Você tem mais ${tentativas} tentativas`);
+  }
+
   inValor.value = "";
   statusDinheiro.innerText = "SUBINDO...";
-  saldoFicticio = saldoFicticio - valorApostado
-  inSaldo.innerText = saldoFicticio.toFixed(2);
+
+  if (window.location.hash == "") {
+    saldoFicticio = saldoFicticio - valorApostado
+    inSaldo.innerText = saldoFicticio.toFixed(2);
+  } else {
+    saldoAtual = saldoAtual - valorApostado;
+    inSaldoAtual.innerText = saldoAtual;
+    saldos[auxUsuario] = saldoAtual;
+    localStorage.setItem("saldos", saldos.join(";"));
+  }
+
+
   apostado(valorApostado);
   resgatar.disabled = false;
   apostar.disabled = true;
-  
+
 });
 
 const validacoes = (valorApostado) => {
+
 
   if (valorApostado == "") {
     alert("Preenha o campo com valor!");
     pararValidacao = true;
     return;
   }
-   if(window.location.hash = '') {
-    if (valorApostado > saldoFicticio) {
-      alert("Valor a mais!");
-      pararValidacao = true;
-      return;
-    }else{
-      if (valorApostado > saldoAtual) {
-        alert("Valor a mais!");
-        pararValidacao = true;
-        return;
-      }
-    }
-   }
- 
+
+
+  if (valorApostado > saldoFicticio || valorApostado > saldoAtual) {
+    alert("Valor a mais!");
+    pararValidacao = true;
+    return;
+  }
+
+
   if (tentativas <= 0) {
     alert("Acabou as tentativas");
     resgatar.disabled = true;
@@ -70,7 +81,7 @@ const validacoes = (valorApostado) => {
     pararValidacao = true;
     return;
   }
-  if(saldoFicticio <= 0) {
+  if (saldoFicticio <= 0) {
     alert('SEM SALDO!');
     pararValidacao = true;
     return;
@@ -89,8 +100,17 @@ function resgatou() {
   let valorGanho = valorApostado * multiplicador;
   alert(`Você Resgatou "${multiplicador.toFixed(2)}" x ${valorApostado}
         \nVocê ganhou: ${valorGanho.toFixed(2)}`);
-  saldoFicticio = saldoFicticio + valorGanho;
-  inSaldo.innerText = saldoFicticio.toFixed(2);
+
+  if (window.location.hash == "") {
+    saldoFicticio = saldoFicticio + valorGanho;
+    inSaldo.innerText = saldoFicticio.toFixed(2);
+  } else {
+    saldoAtual = saldoAtual + valorGanho;
+    inSaldoAtual.innerText = saldoAtual;
+    saldos[auxUsuario] = saldoAtual;
+    localStorage.setItem("saldos", saldos.join(";"));
+  }
+
   statusDinheiro.innerText = "Parado";
   valorGanhado.innerHTML = '0';
   mudarMultiplicadores();

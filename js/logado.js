@@ -11,13 +11,13 @@ sacarBtn = document.getElementById("sacarBtn");
 let saldos = [];
 let auxUsuario;
 depositarBtn.addEventListener("click", (e) => {
-    let valorDepositado = depValor.value;
-    if (valorDepositado == null || valorDepositado == 0) {
+    let valorDepositado = Number(depValor.value);
+    if (valorDepositado == null || valorDepositado == 0  || isNaN(valorDepositado)) {
         alert("Valor inválido");
         return;
     } else {
-        valorDepositado = Number(valorDepositado);
-        saldoAtual = Number(saldoAtual + valorDepositado);
+   
+        saldoAtual = Number(saldoAtual + valorDepositado)   ;
         inSaldoAtual.innerText = saldoAtual;
         alert(`Valor depositado!Saldo atual ${saldoAtual}`);
         depValor.value = "";
@@ -41,7 +41,7 @@ sacarBtn.addEventListener("click", (e) => {
         alert(`Valor Sacado !Saldo atual ${saldoAtual}`);
         saqValor.value = "";
         saldos[auxUsuario] = saldoAtual;
-        localStorage.setItem("saldo", saldos.join(";"));
+        localStorage.setItem("saldos", saldos.join(";"));
     }
 
 });
@@ -49,16 +49,18 @@ sacarBtn.addEventListener("click", (e) => {
 window.addEventListener("load", () => {
     console.log(window.location.hash);
     let url = window.location.hash;
-    let cortarUrl = url.slice(1, url.indexOf("{"));
+    let nomeUsuario = url.slice(1, url.indexOf("{"));
 
-    let saldo = url.slice(url.indexOf("{") + 1, url.indexOf("}"))
-    mudarNome.innerText = `Bem vindo ${cortarUrl}`;
-    inSaldoAtual.innerText = saldo;
-    saldoAtual = saldo;
+    auxUsuario = url.slice(url.indexOf("[") + 1, url.indexOf("]"))
+    mudarNome.innerText = `Bem vindo ${nomeUsuario}`;
+    auxUsuario = url.slice(url.indexOf("[") + 1, url.indexOf("]"));
+
 
     saldos = localStorage.getItem("saldos")
         ? localStorage.getItem("saldos").split(";")
         : [];
 
-    auxUsuario = url.slice(url.indexOf("[") + 1, url.indexOf("]"));
+    inSaldoAtual.innerText = saldos[auxUsuario];
+    saldoAtual = saldos[auxUsuario];
+   
 });

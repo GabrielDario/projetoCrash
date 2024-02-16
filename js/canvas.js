@@ -103,7 +103,12 @@ const apostado = () => {
     }
 
     function animacaoMultiplicador() {
-        crash = Math.floor(Math.random() * 30);
+        if(window.location.hash = ''){
+            crash = Math.floor(Math.random() * 30);
+        }else{
+            crash = Math.floor(Math.random() * 10);
+        }
+       
         console.log(`crash ${crash}`);
         if (crash == 0) {
             alert("Estourou!\nAposta perdida!");

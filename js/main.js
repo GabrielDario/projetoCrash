@@ -16,6 +16,9 @@ let saldoFicticio = 50;
 let valorApostado;
 let pararValidacao = false;
 
+let url = window.location.href;
+const contem = url.includes("logado");
+
 
 apostar.addEventListener("click", (e) => {
   valorApostado = inValor.value;
@@ -27,7 +30,7 @@ apostar.addEventListener("click", (e) => {
     return;
   }
 
-  if (window.location.hash == "") {
+  if (contem == false) {
     tentativas--;
     alert(`Você tem mais ${tentativas} tentativas`);
   }
@@ -35,7 +38,7 @@ apostar.addEventListener("click", (e) => {
   inValor.value = "";
   statusDinheiro.innerText = "SUBINDO...";
 
-  if (window.location.hash == "") {
+  if (contem == false) {
     saldoFicticio = saldoFicticio - valorApostado
     inSaldo.innerText = saldoFicticio.toFixed(2);
   } else {
@@ -61,12 +64,20 @@ const validacoes = (valorApostado) => {
     return;
   }
 
-
-  if (valorApostado > saldoFicticio || valorApostado > saldoAtual) {
-    alert("Valor a mais!");
-    pararValidacao = true;
-    return;
+  if (contem == false) {
+    if (valorApostado > saldoFicticio) {
+      alert("Valor a mais!");
+      pararValidacao = true;
+      return;
+    }
+  } else {
+    if (Number(valorApostado) > Number(saldoAtual)) {
+      alert("Valor a mais!");
+      pararValidacao = true;
+      return;
+    }
   }
+ 
 
 
   if (tentativas <= 0) {
@@ -106,7 +117,7 @@ function resgatou() {
     inSaldo.innerText = saldoFicticio.toFixed(2);
   } else {
     saldoAtual = saldoAtual + valorGanho;
-    inSaldoAtual.innerText = saldoAtual;
+    inSaldoAtual.innerText = saldoAtual.toFixed(2);
     saldos[auxUsuario] = saldoAtual;
     localStorage.setItem("saldos", saldos.join(";"));
   }

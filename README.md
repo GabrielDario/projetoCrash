@@ -33,26 +33,7 @@ Projeto de um site de aposta de um jogo de crash,aonde o usuário tem que resgat
          Não vai para o ar, apenas para aprendizado
         --------------------------------------
         Caso for - Se ajeitar com pix - aprender métodos de pagamentos
-        --------------------------------------
-        Código exemplo sorteio : 
-        let real = 0;
-let maior = 0;
-function myFunction() {
-
-  let number = Math.floor(Math.random() * 2);
-  if (number == 0) {
-    real = real + 0.2;
-  } else {
-    real = 0;
-  }
-
-  if(real > maior) {
-    maior = real;
-  }
-  console.log('Multiplicador é :' + real.toFixed(2) + 'x');
-  console.log('maior número: ' + maior.toFixed(2)  )
-}
-var intervalId = setInterval(myFunction, 1000);
+      
        --------------------------------------
        Páginas de dúvidas
             - Como funciona multiplicador
@@ -63,3 +44,13 @@ var intervalId = setInterval(myFunction, 1000);
              - Quem somos
              - Parceiros
        Ganhadores(será pop-up )
+       ---------------------------------------
+       Possíveis erros para arrumar
+        - Ajustar no operador OPERA
+        - Apenas com a senha já loga 
+        ----------------------------------------
+       Código para consertar conversão de números 
+       saldoAtual e botar tudo como padrão máximo
+       duas cadas decimais
+
+      --------------------------------

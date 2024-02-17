@@ -14,6 +14,7 @@ let multiplicador = 0;
 let tempo = 1;
 let travarPassaro = false;
 
+console.log('canvas');
 function draw() {
     //limparAnteriores
     ctx.fillStyle = 'black';
@@ -103,10 +104,10 @@ const apostado = () => {
     }
 
     function animacaoMultiplicador() {
-        if(window.location.hash = ''){
+        if(contem == false){
             crash = Math.floor(Math.random() * 30);
         }else{
-            crash = Math.floor(Math.random() * 10);
+            crash = Math.floor(Math.random() * 20);
         }
        
         console.log(`crash ${crash}`);

@@ -18,7 +18,7 @@ let pararValidacao = false;
 
 let url = window.location.href;
 const contem = url.includes("logado");
-
+console.log('main');
 
 apostar.addEventListener("click", (e) => {
   valorApostado = inValor.value;
@@ -43,8 +43,8 @@ apostar.addEventListener("click", (e) => {
     inSaldo.innerText = saldoFicticio.toFixed(2);
   } else {
     saldoAtual = saldoAtual - valorApostado;
-    inSaldoAtual.innerText = saldoAtual;
-    saldos[auxUsuario] = saldoAtual;
+    inSaldoAtual.innerText = saldoAtual.toFixed(2);
+    saldos[auxUsuario] = saldoAtual.toFixed(2);
     localStorage.setItem("saldos", saldos.join(";"));
   }
 
@@ -76,8 +76,28 @@ const validacoes = (valorApostado) => {
       pararValidacao = true;
       return;
     }
+
+    if (valorApostado.indexOf('.') != -1) {
+
+      let numeroCorrigido;
+      let numeroInteiro;
+      let depoisVirgula;
+
+      let indexPonto = valorApostado.indexOf('.');
+      numeroInteiro = valorApostado.substring(0, indexPonto);
+
+
+      depoisVirgula = valorApostado.substring(indexPonto + 1, indexPonto + 3)
+
+      numeroCorrigido = numeroInteiro + "." + valorApostado.substring(0,
+        indexPonto - 1);
+      numeroCorrigido = numeroInteiro + '.' + depoisVirgula;
+
+      valorApostado = numeroCorrigido;
+    }
+
   }
- 
+
 
 
   if (tentativas <= 0) {
@@ -88,7 +108,7 @@ const validacoes = (valorApostado) => {
     return;
   }
   if (isNaN(valorApostado)) {
-    alert("Digite um número");
+    alert("Digite um número válido\n.(ponto) em vez de ,(vírgula)talvez?");
     pararValidacao = true;
     return;
   }
@@ -112,19 +132,20 @@ function resgatou() {
   alert(`Você Resgatou "${multiplicador.toFixed(2)}" x ${valorApostado}
         \nVocê ganhou: ${valorGanho.toFixed(2)}`);
 
-  if (window.location.hash == "") {
+  if (contem == false) {
     saldoFicticio = saldoFicticio + valorGanho;
     inSaldo.innerText = saldoFicticio.toFixed(2);
   } else {
     saldoAtual = saldoAtual + valorGanho;
     inSaldoAtual.innerText = saldoAtual.toFixed(2);
-    saldos[auxUsuario] = saldoAtual;
+    saldos[auxUsuario] = saldoAtual.toFixed(2);
     localStorage.setItem("saldos", saldos.join(";"));
   }
 
   statusDinheiro.innerText = "Parado";
   valorGanhado.innerHTML = '0';
   mudarMultiplicadores();
+  tempo = 1;
   draw();
   travarPassaro = false;
   resgatar.disabled = true;

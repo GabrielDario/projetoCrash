@@ -9,12 +9,11 @@ const ctx = c.getContext("2d");
 const valorGanhado = document.getElementById("valorGanhado");
 
 let crash;
-let estourar = false;
+
 let multiplicador = 0;
 let tempo = 1;
 let travarPassaro = false;
 
-console.log('canvas');
 function draw() {
     //limparAnteriores
     ctx.fillStyle = 'black';
@@ -110,7 +109,7 @@ const apostado = () => {
             crash = Math.floor(Math.random() * 20);
         }
        
-        console.log(`crash ${crash}`);
+
         if (crash == 0) {
             alert("Estourou!\nAposta perdida!");
             statusDinheiro.innerText = "Parado";

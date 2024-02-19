@@ -2,13 +2,12 @@ let inLogin = document.getElementById("inLogin");
 let inSenha = document.getElementById("inSenha");
 let logarBtn = document.getElementById("logarBtn");
 
+let logIn;
 let emails = [];
 let senhas = [];
-let usuarios = [];
 
 let login;
 let senha;
-
 let aux;
 
 logarBtn.addEventListener("click", (e) => {
@@ -19,7 +18,7 @@ logarBtn.addEventListener("click", (e) => {
 
     for (i = 0; i < emails.length; i++) {
         if (emails[i] == login) {
-            console.log('Possui!')
+
             aux = i;
         }
     }
@@ -27,6 +26,7 @@ logarBtn.addEventListener("click", (e) => {
         alert('Logado com sucesso!');
         logIn = 'true+' +  aux;
         localStorage.setItem("logIn", logIn);
+    
         window.location = "logado.html#"  + "{" + aux + "}";
     } else {
         alert('Dados incorretos!');
@@ -42,12 +42,7 @@ window.addEventListener("load", () => {
     senhas = localStorage.getItem("senhas")
         ? localStorage.getItem("senhas").split(";")
         : [];
-    usuarios = localStorage.getItem("usuarios")
-        ? localStorage.getItem("usuarios").split(";")
-        : [];
-    saldos = localStorage.getItem("saldos")
-        ? localStorage.getItem("saldos").split(";")
-        : [];
+  
     logIn = localStorage.getItem("logIn")
         ? localStorage.getItem("logIn").split(";")
         : [];

@@ -11,16 +11,14 @@ let multiplicadores = [0, 0, 0];
 
 let tentativas = 3;
 
-let saldoInicial = 50;
 let saldoFicticio = 50;
 let valorApostado;
 let pararValidacao = false;
 
 let url = window.location.href;
 const contem = url.includes("logado");
-console.log('main');
 
-var logIn;
+// var logIn;
 
 apostar.addEventListener("click", (e) => {
   valorApostado = inValor.value;
@@ -126,7 +124,7 @@ resgatar.addEventListener("click", (e) => {
 });
 
 function resgatou() {
-  console.log('resgatou');
+
   clearInterval(animationInterval);
   clearInterval(multiplicadorInterval);
   let valorGanho = valorApostado * multiplicador;

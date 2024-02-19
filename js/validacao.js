@@ -1,5 +1,3 @@
-console.log('Abrindo...');
-
 let cadastrarBtn = document.getElementById("cadastrarBtn");
 
 let inUsuario = document.getElementById("inUsuario");
@@ -14,6 +12,7 @@ let validarEmail2 = [];
 let usuario;
 let email;
 let senha;
+
 let confirmarSenha;
 
 let usuarios = [];
@@ -22,7 +21,7 @@ let senhas = [];
 let saldos = [];
 cadastrarBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    console.log('clicou');
+
 
     usuario = inUsuario.value;
     email = inEmail.value;

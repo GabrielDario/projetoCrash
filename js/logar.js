@@ -25,7 +25,9 @@ logarBtn.addEventListener("click", (e) => {
     }
     if (senha == senhas[aux]) {
         alert('Logado com sucesso!');
-        window.location = "logado.html#" + usuarios[aux] + "{" + saldos[aux] + "}" + "[" +  aux + "]";
+        logIn = 'true+' +  aux;
+        localStorage.setItem("logIn", logIn);
+        window.location = "logado.html#"  + "{" + aux + "}";
     } else {
         alert('Dados incorretos!');
         inLogin.value = "";
@@ -46,4 +48,8 @@ window.addEventListener("load", () => {
     saldos = localStorage.getItem("saldos")
         ? localStorage.getItem("saldos").split(";")
         : [];
+    logIn = localStorage.getItem("logIn")
+        ? localStorage.getItem("logIn").split(";")
+        : [];
+
 });

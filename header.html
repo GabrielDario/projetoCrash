@@ -5,7 +5,7 @@
     <a href="index.html" target="_parent"> <img src="img/letras-logo.png"></a>
 
 
-    <div class="flutuar" id="logadoMenu">
+    <div class="flutuar" id="naoLogadoMenu">
         <a href="logar.html" target="_parent"><img src="img/register.png"></a>
         <a href="logar.html" target="_parent">
             <p>Logar</p>
@@ -16,22 +16,34 @@
         </a>
     </div>
 
-    <div class="flutuar" id="naoLogadoMenu" style="display: none;">
-        <a href="logar.html" target="_parent"><img src="img/register.png"></a>
-        <a href="logar.html" target="_parent">
-            <p>Logar</p>
-        </a>
-        <a href="registro.html" target="_parent"> <img src="img/login.png"></a>
-        <a href="registro.html" target="_parent">
-            <p>Cadastrar</p>
+    <div class="flutuar" id="logadoMenu" style="display: none;">
+
+        <a href="index.html" target="_parent"> <img src="img/login.png"></a>
+        <a href="index.html" target="_parent">
+            <p>Sair</p>
         </a>
     </div>
 </header>
 <script>
-    if (window.location.hash == '') {
-        let logadoMenu = document.getElementById("logadoMenu");
-        let naoLogadoMenu = document.getElementById("sacnaoLogadoMenuarBtn");
+    let logadoMenu = document.getElementById("logadoMenu");
+    let naoLogadoMenu = document.getElementById("naoLogadoMenu");
+    logIn = localStorage.getItem("logIn");
 
-        logadoMenu.style.display = 'none';
+    let validar = logIn.indexOf("true");
+    if (validar == 0) {
+        naoLogadoMenu.style.display = 'none';
+        logadoMenu.style.display = 'flex';
+        logadoMenu.style.margin = '0 5%';
     }
+
+    logadoMenu.addEventListener("click", (e) => {
+        logIn = 'false';
+        localStorage.setItem("logIn", logIn);
+
+        naoLogadoMenu.style.display = 'flex';
+        logadoMenu.style.display = 'none';
+        alert("Deslogando!");
+        window.location = "index.html";
+
+    });
 </script>

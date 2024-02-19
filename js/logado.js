@@ -8,6 +8,7 @@ let depositarBtn = document.getElementById("depositarBtn");
 let sacarBtn = document.getElementById("sacarBtn");
 
 let saldos = [];
+let usuarios = [];
 let auxUsuario;
 
 let mudarNome = document.getElementById("mudarNome");
@@ -61,11 +62,25 @@ sacarBtn.addEventListener("click", (e) => {
 
 
 window.addEventListener("load", () => {
+    logIn = localStorage.getItem("logIn")
+        ? localStorage.getItem("logIn").split(";")
+        : [];
+
+    usuarios = localStorage.getItem("usuarios")
+        ? localStorage.getItem("usuarios").split(";")
+        : [];
+    saldos = localStorage.getItem("saldos")
+        ? localStorage.getItem("saldos").split(";")
+        : [];
 
     let url = window.location.hash;
-    let nomeUsuario = url.slice(1, url.indexOf("{"));
 
-    auxUsuario = Number(url.slice(url.indexOf("[") + 1, url.indexOf("]")))
+
+    auxUsuario = Number(url.slice(url.indexOf("{") + 1, url.indexOf("}")));
+
+    let nomeUsuario = usuarios[auxUsuario];
+    nomeUsuario = nomeUsuario[0].toLocaleUpperCase() +
+        nomeUsuario.substring(1, nomeUsuario.length)
     mudarNome.innerText = `Bem vindo ${nomeUsuario}`;
 
 

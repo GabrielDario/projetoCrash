@@ -153,4 +153,5 @@ const apostado = () => {
 
 window.onload = function (e) {
     draw();
+   
 }   

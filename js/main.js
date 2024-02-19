@@ -20,10 +20,11 @@ let url = window.location.href;
 const contem = url.includes("logado");
 console.log('main');
 
+var logIn;
+
 apostar.addEventListener("click", (e) => {
   valorApostado = inValor.value;
-  console.log("Valor apostado: " + valorApostado);
-
+ 
   validacoes(valorApostado);
 
   if (pararValidacao == true) {

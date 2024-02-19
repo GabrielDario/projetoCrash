@@ -33,7 +33,6 @@ Projeto de um site de aposta de um jogo de crash,aonde o usuário tem que resgat
          Não vai para o ar, apenas para aprendizado
         --------------------------------------
         Caso for - Se ajeitar com pix - aprender métodos de pagamentos
-      
        --------------------------------------
        Páginas de dúvidas
             - Como funciona multiplicador
@@ -48,9 +47,9 @@ Projeto de um site de aposta de um jogo de crash,aonde o usuário tem que resgat
        Possíveis erros para arrumar
         - Ajustar no operador OPERA
         - Apenas com a senha já loga 
+        - FRAME BOTA TUDO A PAGINA QND DESLOGA
         ----------------------------------------
        Código para consertar conversão de números 
        saldoAtual e botar tudo como padrão máximo
        duas cadas decimais
-
       --------------------------------
